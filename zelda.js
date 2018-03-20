@@ -365,30 +365,30 @@ function render() {
             //Find the correct image for this map cell
             switch (map[row][column]) {
                 case TILE:
-                    cell.src = "../images/tile.png";
+                    cell.src = "images/tile.png";
                     break;
 
                 case HOUSE:
-                    cell.src = "../images/house.png";
+                    cell.src = "images/house.png";
                     break;
 
                 case SKELETON:
-                    cell.src = "../images/skeleton.png";
+                    cell.src = "images/skeleton.png";
                     break;
 
                 case ZELDA:
-                    cell.src = "../images/zelda.png";
+                    cell.src = "images/zelda.png";
                     break;
             }
 
             //Add the char and ganon from the gameObjects array
             switch (gameObjects[row][column]) {
                 case CHAR:
-                    cell.src = "../images/character.png";
+                    cell.src = "images/character.png";
                     break;
 
                 case GANON:
-                    cell.src = "../images/ganon.png";
+                    cell.src = "images/ganon.png";
                     break;
             }
 
