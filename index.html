@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>Zelda Adventure</title>
+    <link rel="stylesheet" href="zelda.css">
+    <link rel="stylesheet" href="title.css">
+</head>
+<body onload="gameLoad()">
+    <div id="title">
+        <div id="naviBox"><img id="navi" src="../images/navi.png" /></div>
+        <div id="logo"><img src="../images/title.png" /></div>
+        <div id="button-container">
+            <div><button id="titleMute" class="menuButtons" onclick="muteTitle()">MUTE</button></div>
+            <div><button class="menuButtons" onclick="showInstructions()">HOW TO PLAY</button></div>
+            <div><button class="menuButtons" onclick="showGame()">PLAY</button></div>
+        </div>
+    </div>
+    <div id="instructions">
+        <div id="inTitle">INSTRUCTIONS:</div>
+        <div>Use the arrow keys to move link in the direction desired. Fight skeletons to gain experience 
+        and have a chance of gaining rupees. Spend your rupees in houses to buy elixirs. Your health will
+        decrease by one every time you move to a new tile. Earning more rupees, and elixir, and experience 
+        will increase your total score. If you successfully reach Zelda, you win the game!</div>
+        <button id="closeButton" onclick="showTitle()">Close</button>
+    </div>
+    <div id="game">
+        <div id="gameButtonContainer">
+            <button class="gameButtons" onclick="backToTitle()">TITLE</button>
+            <button class="gameButtons" onclick="restart()">RESTART</button>
+            <button class="gameButtons" id="gameMute" onclick="muteGame()">MUTE</button>
+        </div>
+        <div id="stage"></div>
+        <p id="output"></p>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="zelda.js"></script>
+</body>
