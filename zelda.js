@@ -1,4 +1,4 @@
-﻿var victoryAudio = new Audio('../audio/victory.mp3')
+﻿var victoryAudio = new Audio('audio/victory.mp3')
 
 //Get a reference to the stage and output
 var stage = document.querySelector("#stage");
@@ -407,8 +407,8 @@ function render() {
       + elixirs + ", Experience: " + experience;
 }
 //Functions for switching between game screens
-var menuAudio = new Audio('../audio/menu.mp3');
-var gameAudio = new Audio('../audio/gerudo.mp3')
+var menuAudio = new Audio('audio/menu.mp3');
+var gameAudio = new Audio('audio/gerudo.mp3')
 var isGameMuted;
 var isTitleMuted = false;
 
