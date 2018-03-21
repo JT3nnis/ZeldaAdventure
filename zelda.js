@@ -14,7 +14,7 @@ var map =
   [0, 0, 0, 1, 0, 0, 2, 0],
   [0, 1, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 2, 0, 0, 1],
-  [0, 2, 0, 1, 0, 0, 2, 0],
+  [0, 2, 1, 0, 0, 0, 2, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 1, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 2]
@@ -24,9 +24,9 @@ var map =
 var gameObjects =
 [
   [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 5, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 5, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
@@ -178,28 +178,93 @@ function moveMonster() {
     //Find out what kinds of things are in the cells
     //that surround the ganon. If the cells contain tile,
     //push the corresponding direction into the validDirections array
-    if (ganonRow > 0) {
-        var thingAbove = map[ganonRow - 1][ganonColumn];
-        if (thingAbove === TILE) {
-            validDirections.push(UP);
+
+    //MONSTER AI
+    //If monster row and column is greater than char, remove these two directions
+    if (charColumn > ganonColumn && charRow > ganonRow) {
+        if (ganonRow > 0) {
+            var thingAbove = map[ganonRow - 1][ganonColumn];
+            if (thingAbove === TILE) {
+                validDirections.push(DOWN);
+            }
+        }
+        if (ganonColumn > 0) {
+            var thingToTheLeft = map[ganonRow][ganonColumn - 1];
+            if (thingToTheLeft === TILE) {
+                validDirections.push(RIGHT);
+            }
         }
     }
-    if (ganonRow < ROWS - 1) {
-        var thingBelow = map[ganonRow + 1][ganonColumn];
-        if (thingBelow === TILE) {
-            validDirections.push(DOWN);
+    //If monster column is greater and row is less than char, remove these two directions
+    else if (charColumn > ganonColumn && charRow < ganonRow) {
+        if (ganonRow > 0) {
+            var thingAbove = map[ganonRow - 1][ganonColumn];
+            if (thingAbove === TILE) {
+                validDirections.push(UP);
+            }
+        }
+        if (ganonColumn < COLUMNS - 1) {
+            var thingToTheRight = map[ganonRow][ganonColumn + 1];
+            if (thingToTheRight === TILE) {
+                validDirections.push(RIGHT);
+            }
         }
     }
-    if (ganonColumn > 0) {
-        var thingToTheLeft = map[ganonRow][ganonColumn - 1];
-        if (thingToTheLeft === TILE) {
-            validDirections.push(LEFT);
+    //If monster row is greater and column is less than char, remove these two directions
+    else if (charColumn < ganonColumn && charRow > ganonRow) {
+        if (ganonRow > 0) {
+            var thingAbove = map[ganonRow - 1][ganonColumn];
+            if (thingAbove === TILE) {
+                validDirections.push(DOWN);
+            }
+        }
+        if (ganonColumn > 0) {
+            var thingToTheLeft = map[ganonRow][ganonColumn - 1];
+            if (thingToTheLeft === TILE) {
+                validDirections.push(LEFT);
+            }
         }
     }
-    if (ganonColumn < COLUMNS - 1) {
-        var thingToTheRight = map[ganonRow][ganonColumn + 1];
-        if (thingToTheRight === TILE) {
-            validDirections.push(RIGHT);
+    //If monster row and column is less than char, remove these two directions
+    else if (charColumn < ganonColumn && charRow > ganonRow) {
+        if (ganonRow < ROWS - 1) {
+            var thingBelow = map[ganonRow + 1][ganonColumn];
+            if (thingBelow === TILE) {
+                validDirections.push(UP);
+            }
+        }
+        if (ganonColumn < COLUMNS - 1) {
+            var thingToTheRight = map[ganonRow][ganonColumn + 1];
+            if (thingToTheRight === TILE) {
+                validDirections.push(LEFT);
+            }
+        }
+    }
+    //If there are equal, ganondorf has chance to move anywhere
+    else {
+        if (ganonRow < ROWS - 1) {
+            var thingBelow = map[ganonRow + 1][ganonColumn];
+            if (thingBelow === TILE) {
+                validDirections.push(UP);
+            }
+        }
+        if (ganonRow > 0) {
+            var thingAbove = map[ganonRow - 1][ganonColumn];
+            if (thingAbove === TILE) {
+                validDirections.push(DOWN);
+            }
+        }
+        if (ganonColumn < COLUMNS - 1) {
+            var thingToTheRight = map[ganonRow][ganonColumn + 1];
+            if (thingToTheRight === TILE) {
+                validDirections.push(RIGHT);
+            }
+        }
+        if (ganonColumn < COLUMNS - 1) {
+            var thingToTheRight = map[ganonRow][ganonColumn + 1];
+            if (thingToTheRight === TILE) {
+                validDirections.push(LEFT);
+            }
         }
     }
 
@@ -486,4 +551,5 @@ function gameLoad() {
         $("#naviBox").animate(({ top: '-=330' }), 2000);
     }, 1000);
 }
+
 
