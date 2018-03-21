@@ -8,7 +8,7 @@ var output = document.querySelector("#output");
 window.addEventListener("keydown", keydownHandler, false);
 
 //The game map
-var map =
+const map =
 [
   [0, 2, 0, 0, 0, 0, 0, 3],
   [0, 0, 0, 1, 0, 0, 2, 0],
@@ -21,7 +21,7 @@ var map =
 ];
 
 //The game objects map
-var gameObjects =
+const gameObjects =
 [
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
@@ -34,15 +34,15 @@ var gameObjects =
 ];
 
 //Map code
-var TILE = 0;
-var HOUSE = 1;
-var SKELETON = 2;
-var ZELDA = 3;
-var CHAR = 4;
-var GANON = 5;
+const TILE = 0;
+const HOUSE = 1;
+const SKELETON = 2;
+const ZELDA = 3;
+const CHAR = 4;
+const GANON = 5;
 
 //The size of each cell
-var SIZE = 64;
+const SIZE = 64;
 
 //The number of rows and columns
 var ROWS = map.length;
@@ -54,7 +54,7 @@ var charColumn;
 var ganonRow;
 var ganonColumn;
 
-for (var row = 0; row < ROWS; row++) {
+for (let row = 0; row < ROWS; row++) {
     for (var column = 0; column < COLUMNS; column++) {
         if (gameObjects[row][column] === CHAR) {
             charRow = row;
@@ -68,10 +68,10 @@ for (var row = 0; row < ROWS; row++) {
 }
 
 //Arrow key codes
-var UP = 38;
-var DOWN = 40;
-var RIGHT = 39;
-var LEFT = 37;
+const UP = 38;
+const DOWN = 40;
+const RIGHT = 39;
+const LEFT = 37;
 
 //The game variables
 var elixirs = 10;
