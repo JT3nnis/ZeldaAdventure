@@ -380,25 +380,30 @@ function endGame() {
         victoryAudio.play();
 
         //Display the game message
-        gameMessage
-          = "You did it. You rescued Zelda! " + "Final Score: " + score;
+        document.getElementById("victoryText").innerText = "You did it. You rescued Zelda! " + "Final Score: " + score;
+        showVictory();
     }
     else if (gameObjects[charRow][charColumn] === GANON) {
-        gameMessage
-          = "Ganondorf has defeated you!";
+        document.getElementById("defeatText").innerText = "Ganondorf has defeated you!";
+        showDefeat();
     }
     else {
-        //Display the game message
+        //Store string
+        var defText = "";
+
         if (rupees <= 0) {
-            gameMessage += " You've run out of rupees!";
+            defText += " You've run out of rupees!";
         }
         else {
-            gameMessage += " You've run out of elixirs!";
+            defText += " You've run out of elixirs!";
         }
 
-        gameMessage
+        defText
           += " your journey ends here...";
 
+        document.getElementById("defeatText").innerText = defText;
+
+        showDefeat();
     }
 
     //Remove the keyboard listener to end the game
@@ -494,8 +499,13 @@ function showTitle() {
     document.getElementById("instructions").style.display = "none";
     playTitleTheme();
 }
-function backToTitle() {
-    document.getElementById("title").style.display = "block";
+function showVictory() {
+    document.getElementById("victory").style.display = "block";
+    document.getElementById("game").style.display = "none";
+    playTitleTheme();
+}
+function showDefeat() {
+    document.getElementById("defeat").style.display = "block";
     document.getElementById("game").style.display = "none";
     gameAudio.pause;
     gameAudio.currentTime = 500;

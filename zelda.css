@@ -1,4 +1,30 @@
-﻿#inTitle{
+﻿#victory {
+    font-family:'Times New Roman';
+    font-size:36px;
+    display:none;
+}
+#defeat{
+    font-family:'Times New Roman';
+    font-size:36px;
+    display:none;
+}
+#defeatText{
+    font-family:'Times New Roman';
+    font-size:18px;
+}
+#victoryText{
+    font-family:'Times New Roman';
+    font-size:18px;
+}
+#victoryImage {
+    height:500px;
+    width:500px;
+}
+#defeatImage {
+    height:500px;
+    width:500px;
+}
+#inTitle{
     font-size:36px;
     font-weight:bold;
 }
