@@ -98,7 +98,7 @@ img {
     position: relative;
     width: 512px;
     height: 512px;
-    background-image: url("../images/grass.png");
+    background-image: url("images/grass.png");
 }
 
 .cell {
